@@ -1,0 +1,25 @@
+extend type Query {
+  "Query the host environment"
+  host: Host!
+}
+
+"Information about the host execution environment"
+type Host {
+  "The current working directory on the host"
+  workdir(exclude: [String!], include: [String!]): Directory!
+
+  "Access a directory on the host"
+  directory(path: String!, exclude: [String!], include: [String!]): Directory!
+
+  "Lookup the value of an environment variable. Null if the variable is not available."
+  envVariable(name: String!): HostVariable
+}
+
+"An environment variable on the host environment"
+type HostVariable {
+  "The value of this variable"
+  value: String!
+
+  "A secret referencing the value of this variable"
+  secret: Secret!
+}

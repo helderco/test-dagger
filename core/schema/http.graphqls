@@ -1,0 +1,4 @@
+extend type Query {
+    "An http remote"
+    http(url: String!): File!
+}

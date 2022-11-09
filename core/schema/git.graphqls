@@ -1,0 +1,26 @@
+extend type Query {
+    "Query a git repository"
+    git(url: String!, keepGitDir: Boolean): GitRepository!
+}
+
+"A git repository"
+type GitRepository {
+    "List of branches on the repository"
+    branches: [String!]!
+    "Details on one branch"
+    branch(name: String!): GitRef!
+    "List of tags on the repository"
+    tags: [String!]!
+    "Details on one tag"
+    tag(name: String!): GitRef!
+    "Details on one commit"
+    commit(id: String!): GitRef!
+}
+
+"A git ref (tag or branch)"
+type GitRef {
+    "The digest of the current value of this ref"
+    digest: String!
+    "The filesystem tree at this ref"
+    tree: Directory!
+}
