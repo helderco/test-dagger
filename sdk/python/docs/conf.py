@@ -28,3 +28,6 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
 intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}
+
+version = "0.1.3"
+release = "sdk/python/v0.1.3"
